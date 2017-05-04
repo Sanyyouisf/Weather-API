@@ -6,7 +6,8 @@ $(document).ready(function() {
 
     //event for clicking the current weather button
     $("#btnZip").on("click", (e) => {
-        $("#output").text("");
+        $("#currentOutput").text("");
+        $("#forcastOutput").text("");
         zipCode = $("#zipCode").val();
         if (checkZip(zipCode) === true) {
 	        loadWeather(zipCode)
@@ -25,7 +26,8 @@ $(document).ready(function() {
     $("#zipCode").keyup((e) => {
     	if (e.keyCode === 13 ){
     		console.log("you pressed enter key");
-    		$("#output").text("");
+    		$("#currentOutput").text("");
+            $("#forcastOutput").text("");
         	zipCode = $("#zipCode").val();
 	        if (checkZip(zipCode) === true) {
     			loadWeather(zipCode)
@@ -44,7 +46,7 @@ $(document).ready(function() {
 
     //event for clicking the 3 days weather button
     $("#btnZip3").on("click", (e) => {
-        $("#output").text("");
+        $("#forcastOutput").text("");
         zipCode = $("#zipCode").val();
         if (checkZip(zipCode) === true) {
             loadWeather3(zipCode)
@@ -60,7 +62,7 @@ $(document).ready(function() {
 
     //event for clicking the 7 days weather button
     $("#btnZip7").on("click", (e) => {
-        $("#output").text("");
+        $("#forcastOutput").text("");
         if (checkZip(zipCode) === true) {
             zipCode = $("#zipCode").val();
             loadWeather7(zipCode)
@@ -114,33 +116,40 @@ $(document).ready(function() {
 
 
     //write to dom the current day weather
-    let outputString = "";
     const WriteTempToDom = (result) => {
+        let outputString = "";
         outputString += `<div class="oneDayTemp">`;
-        outputString += `<div ><p class="placeName">the temperature in  :</p>${result.name} <p class="date">Date :${dayDate} </p></div>`;
+        outputString += `<div class="temp col-xs-4"><p>day :${moment.unix(result.dt).format('dddd')} </p> </div>`;
+        outputString += `<div class="temp col-xs-4"><p>date :${moment.unix(result.dt).format('MMM Do YY')}</p>  </div>`; 
+        outputString += `<div ><p class="placeName col-xs-4">City  :${result.name}</p> </div>`;
         outputString += `<br>`;
         outputString += `<div class="temp"><p>Temp :</p>${result.main.temp} Fahrenheit </div>`;
         outputString += `<div class="condition"><p>  Condition :</p>${result.weather[0].description}</div>`;
         outputString += `<div class="pressure"><p>Air Pressure :</p>${result.main.pressure} hpa </div>`;
-        outputString += `<div class="wspeed"><p>Wind Speed :</p>${result.wind.speed}miles/hour</div>`;
+        outputString += `<div class="wspeed"><p>Wind Speed :</p>${result.wind.speed}   miles/hour</div>`;
         outputString += `</div>`;
-        $("#output").append(outputString);
+        $("#currentOutput").html(outputString);
     };
 
     //write to dom 3 and 7 days weather
+
     const WriteTempNToDom = (result) => {
-        outputString += `<div class="nDaysTemp">`;
-        outputString += `<div class="placeName"><p>the temperature in  :</p>${result.city.name} </div>`;
-        outputString += `<br>`;
+        let output2String = "";
+        output2String += `<div class="nDaysTemp">`;
+        output2String += `<div><p class="placeName col-xs-11">City  :${result.city.name}</p> </div>`;
+        output2String += `<br>`;
         for (let i = 0; i < result.list.length; i++) {
-            outputString += `<div class="temp"><p>Temp :</p>${result.list[i].temp.day} Fahrenheit </div>`;
-            outputString += `<div class="condition"><p>  Condition :</p>${result.list[i].weather[0].description}</div>`;
-            outputString += `<div class="pressure"><p>Air Pressure :</p>${result.list[i].pressure} hpa </div>`;
-            outputString += `<div class="wspeed"><p>Wind Speed :</p>${result.list[i].speed}miles/hour</div>`;
-            outputString += `<br>`;
+            output2String += `<div><p class="temp col-xs-6">day :${moment.unix(result.list[i].dt).format('dddd')} </p> </div>`;
+            output2String += `<div><p class="temp col-xs-6">date :${moment.unix(result.list[i].dt).format('MMM Do YY')} </p> </div>`; 
+            output2String += `<br>`;
+            output2String += `<div><p class="temp">Temp :</p>${result.list[i].temp.day} Fahrenheit </div>`;
+            output2String += `<div><p class="condition">  Condition :</p>${result.list[i].weather[0].description}</div>`;
+            output2String += `<div><p class="pressure">Air Pressure :</p>${result.list[i].pressure} hpa </div>`;
+            output2String += `<div><p class="wspeed">Wind Speed :</p>${result.list[i].speed}   miles/hour</div>`;
+            output2String += `<br>`;
         }
-        outputString += `</div>`;
-        $("#output").append(outputString);
+        output2String += `</div>`;
+        $("#forcastOutput").html(output2String);
     };
 
 
