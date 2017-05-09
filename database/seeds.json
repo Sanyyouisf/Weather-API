@@ -1,41 +1,48 @@
 {
-  "forecasts" : {
-	    "forecast0": {
-    "Day": "",
-    "date": "",
-    "City": "",
-    "Temp": "",
-    "Condition": "",
-    "Air Pressure": "",
-    "Wind Speed": ""
-},
-"forecast1": {
-    "Day": "",
-    "date": "",
-    "City": "",
-    "Temp": "",
-    "Condition": "",
-    "Air Pressure": "",
-    "Wind Speed": ""
-},
-"forecast2": {
-    "Day": "",
-    "date": "",
-    "City": "",
-    "Temp": "",
-    "Condition": "",
-    "Air Pressure": "",
-    "Wind Speed": ""
-},
-  "users": {
-    "user0": {
-      "uid": "jm96j28tkGc2XyyPowOslFl4rBM2"
+    "forecasts": {
+        "forecast0": {
+            "Day": "",
+            "date": "May 9th 17",
+            "City": "Glenview",
+            "Temp": "84.2 Fahrenheit",
+            "Condition": "scattered clouds",
+            "Air Pressure": "1015 hpa",
+            "Wind Speed": "3.87 miles/hour"
+        },
+        "forecast1": {
+            "Day": "Wednesday",
+            "date": "May 10th 17",
+            "City": "Glenview",
+            "Temp": "84.2 Fahrenheit",
+            "Condition": "sky is clear",
+            "Air Pressure": "1005.14 hpa",
+            "Wind Speed": "3.13 miles/hour"
+        },
+        "forecast2": {
+            "Day": "Thursday",
+            "date": "May 11th 17",
+            "City": "Glenview",
+            "Temp": "84.99 Fahrenheit",
+            "Condition": "scattered clouds",
+            "Air Pressure": "1002.45 hpa",
+            "Wind Speed": "2.56 miles/hour"
+        }
     },
-    "user1": {
-      "uid": "V5AaTO0NM7TGsNLVAV4X0JpMshg2"
-    },
-    "user2": {
-      "uid": "tLegjdFfmENcy21zXiiNGTszaIl1"
+
+    "users": {
+        "user0": {
+            "uid": "jm96j28tkGc2XyyPowOslFl4rBM2",
+            "username":"ww"
+        },
+        "user1": {
+            "uid": "V5AaTO0NM7TGsNLVAV4X0JpMshg2",
+            "username":"ww"
+        },
+        "user2": {
+            "uid": "tLegjdFfmENcy21zXiiNGTszaIl1",
+            "username":"ww"
+
+        }
     }
-  }
+
 }

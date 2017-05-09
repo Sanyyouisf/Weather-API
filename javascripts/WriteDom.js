@@ -1,6 +1,6 @@
 var WeatherAPI = ((DomData)=>{
-
-	//write to dom the current day weather
+	
+    //write to dom the current day weather
     DomData.WritetToDom = (result) => {
         let outputString = "";
         outputString += `<div class="oneDayTemp">`;

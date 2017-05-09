@@ -6,10 +6,10 @@ $(document).ready(function() {
     let zipCode = "";
     let dayDate = new Date();
 
+    //initialize the firebase
     WeatherAPI.firebaseCredentials().then((key) => {
         apiKey = key;
         firebase.initializeApp(apiKey);
-        // console.log("apiKey in initializeApp",apiKey);
     }).catch((error) => {
         console.log("error in key", error);
     });
@@ -103,7 +103,7 @@ $(document).ready(function() {
 
 
 //******************************************
-// credentials functions
+//  user credentials functions
 //******************************************
     //register function
     $("#RegisterBtn").click(() => {
@@ -126,6 +126,7 @@ $(document).ready(function() {
                     $("#login-container").addClass("hide");
                     $(".weather-container").removeClass("hide");
                     $("#btnLogout").removeClass("hide");
+                    WeatherAPI.createLogoutButton(apiKey);
                     // writeDom(apikey);
                 }).catch((error) => {
                     console.log("error in register", error.message);
@@ -152,22 +153,24 @@ $(document).ready(function() {
             $(".weather-container").removeClass("hide");
             $("#btnLogout").removeClass("hide");
             console.log("login successfly");
-            // FbApi.createLogoutButton(apikey);
+            WeatherAPI.createLogoutButton(apiKey);
             // writeDom(apikey);
-            // createLogoutButton(apikey);
         }).catch((error) => {
             console.log("error in login user", error.message);
         });
     });
 
 
-    $("#btnLogout").on('click',()=>{
+    $("#logout-container").on("click","#logoutButton",()=>{
         WeatherAPI.clearLogin();
         WeatherAPI.logoutUser();
+        $("#forcastOutput").addClass("hide");
+        $("#currentOutput").addClass("hide");
         console.log("you logged out now ");
         $("#login-container").removeClass("hide");
-        $("#btnLogout").addClass("hide");
+        $("#logoutButton").addClass("hide");
         $(".weather-container").addClass("hide");
+        
     });
 
 

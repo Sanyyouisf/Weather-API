@@ -21,7 +21,7 @@ var WeatherAPI= ((userData)=>{
 
 
     userData.getUser = (keys, uid) => {
-        console.log("getting user // uid :: ", uid);
+        console.log("uid in get user ", uid);
         let users = [];
         return new Promise ((resolve, reject) => {
             $.ajax({
@@ -29,12 +29,13 @@ var WeatherAPI= ((userData)=>{
                 url: `${keys.databaseURL}/users.json?orderBy="uid"&equalTo="${uid}"`
             }).done((user) => {
                 let response = user;
+                console.log("response in getUser" ,response );
                 Object.keys(response).forEach((key) => {
                     response[key].id = key;
                     users.push(response[key]);
+                    console.log("response[key]",response[key]);
+                    console.log("users",users);
                 });
-            console.log("users :: ", users);
-            console.log("users[0] :: ", users[0]);
                 resolve(users[0]);
             }).fail((error) => {
                 reject(error);
@@ -42,6 +43,16 @@ var WeatherAPI= ((userData)=>{
         });
     };
 
+
+    //creat logout button 
+    userData.createLogoutButton = (apiKey) => {
+    let uid=WeatherAPI.credentialsCurrentUser().uid;
+    console.log("uid in createLogoutButton ",uid);
+    WeatherAPI.getUser(apiKey,uid).then((user)=>{
+        let logoutButton = `<button class ="btn btn-danger" id="logoutButton">LOGOUT ${user.username}</button>`;
+      $("#logout-container").html(logoutButton);  
+    });
+  };
 
 
     //to clear text boxes
