@@ -1,0 +1,41 @@
+{
+  "forecasts" : {
+	    "forecast0": {
+    "Day": "",
+    "date": "",
+    "City": "",
+    "Temp": "",
+    "Condition": "",
+    "Air Pressure": "",
+    "Wind Speed": ""
+},
+"forecast1": {
+    "Day": "",
+    "date": "",
+    "City": "",
+    "Temp": "",
+    "Condition": "",
+    "Air Pressure": "",
+    "Wind Speed": ""
+},
+"forecast2": {
+    "Day": "",
+    "date": "",
+    "City": "",
+    "Temp": "",
+    "Condition": "",
+    "Air Pressure": "",
+    "Wind Speed": ""
+},
+  "users": {
+    "user0": {
+      "uid": "jm96j28tkGc2XyyPowOslFl4rBM2"
+    },
+    "user1": {
+      "uid": "V5AaTO0NM7TGsNLVAV4X0JpMshg2"
+    },
+    "user2": {
+      "uid": "tLegjdFfmENcy21zXiiNGTszaIl1"
+    }
+  }
+}
