@@ -1,6 +1,7 @@
 {
     "forecasts": {
         "forecast0": {
+            "uid": "jm96j28tkGc2XyyPowOslFl4rBM2",
             "Day": "",
             "date": "May 9th 17",
             "City": "Glenview",
@@ -8,8 +9,10 @@
             "Condition": "scattered clouds",
             "Air Pressure": "1015 hpa",
             "Wind Speed": "3.87 miles/hour"
+
         },
         "forecast1": {
+            "uid": "jm96j28tkGc2XyyPowOslFl4rBM2",
             "Day": "Wednesday",
             "date": "May 10th 17",
             "City": "Glenview",
@@ -19,6 +22,7 @@
             "Wind Speed": "3.13 miles/hour"
         },
         "forecast2": {
+            "uid": "jm96j28tkGc2XyyPowOslFl4rBM2",
             "Day": "Thursday",
             "date": "May 11th 17",
             "City": "Glenview",
@@ -28,20 +32,18 @@
             "Wind Speed": "2.56 miles/hour"
         }
     },
-
     "users": {
         "user0": {
             "uid": "jm96j28tkGc2XyyPowOslFl4rBM2",
-            "username":"ww"
+            "username": "sany"
         },
         "user1": {
             "uid": "V5AaTO0NM7TGsNLVAV4X0JpMshg2",
-            "username":"ww"
+            "username": "sany2"
         },
         "user2": {
             "uid": "tLegjdFfmENcy21zXiiNGTszaIl1",
-            "username":"ww"
-
+            "username": "sany3"
         }
     }
 

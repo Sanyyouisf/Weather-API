@@ -1,8 +1,9 @@
-var WeatherAPI= ((userData)=>{
+var WeatherAPI = ((userData) => {
 
 
     //function to add the user to database
     //The JSON.stringify() method converts a JavaScript value to a JSON string
+    //A POST request is used for modifying or adding  data on the server.
     userData.addUser = (keys, newUser) => {
         return new Promise((resolve, reject) => {
             $.ajax({
@@ -20,21 +21,22 @@ var WeatherAPI= ((userData)=>{
     };
 
 
+    //A GET request is used to get data from the server.
     userData.getUser = (keys, uid) => {
         console.log("uid in get user ", uid);
         let users = [];
-        return new Promise ((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             $.ajax({
                 method: 'GET',
                 url: `${keys.databaseURL}/users.json?orderBy="uid"&equalTo="${uid}"`
             }).done((user) => {
                 let response = user;
-                console.log("response in getUser" ,response );
+                console.log("response in getUser", response);
                 Object.keys(response).forEach((key) => {
                     response[key].id = key;
                     users.push(response[key]);
-                    console.log("response[key]",response[key]);
-                    console.log("users",users);
+                    console.log("response[key]", response[key]);
+                    console.log("users", users);
                 });
                 resolve(users[0]);
             }).fail((error) => {
@@ -46,13 +48,14 @@ var WeatherAPI= ((userData)=>{
 
     //creat logout button 
     userData.createLogoutButton = (apiKey) => {
-    let uid=WeatherAPI.credentialsCurrentUser().uid;
-    console.log("uid in createLogoutButton ",uid);
-    WeatherAPI.getUser(apiKey,uid).then((user)=>{
-        let logoutButton = `<button class ="btn btn-danger" id="logoutButton">LOGOUT ${user.username}</button>`;
-      $("#logout-container").html(logoutButton);  
-    });
-  };
+        let uid = WeatherAPI.credentialsCurrentUser().uid;
+        console.log("uid in createLogoutButton ", uid);
+        WeatherAPI.getUser(apiKey, uid).then((user) => {
+            let logoutButton = `<button class ="btn btn-danger" id="logoutButton">LOGOUT ${user.username}</button>`;
+            logoutButton += `<button class ="btn btn-danger" id="SaveButton">Save </button>`;
+            $("#logout-container").html(logoutButton);
+        });
+    };
 
 
     //to clear text boxes
@@ -64,5 +67,5 @@ var WeatherAPI= ((userData)=>{
 
 
 
-	return userData;
+    return userData;
 })(WeatherAPI || {});
