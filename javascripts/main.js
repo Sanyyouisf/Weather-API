@@ -5,6 +5,7 @@ $(document).ready(function() {
     let cityId = "";
     let zipCode = "";
     let forecasts = {};
+    let currentWeather ={};
     let dayDate = new Date();
 
     //initialize the firebase
@@ -29,6 +30,7 @@ $(document).ready(function() {
                 .then((result) => {
                     console.log("result in the current weather", result);
                     WeatherAPI.WritetToDom(result);
+                    currentWeather = result ;
                 })
                 .catch((error) => {
                     console.log("error in current weather",error);
@@ -50,6 +52,7 @@ $(document).ready(function() {
                     .then((result) => {
                         console.log("result when hit enter", result);
                         WeatherAPI.WritetToDom(result);
+                        currentWeather = result ;
                     })
                     .catch((error) => {
                         console.log(error);
@@ -68,6 +71,8 @@ $(document).ready(function() {
                 .then((result) => {
                     console.log("result", result);
                     WeatherAPI.WritetNToDom(result);
+                    forecasts = result ;
+                    console.log("forecasts in forcastOutput3",forecasts);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -85,6 +90,7 @@ $(document).ready(function() {
                 .then((result) => {
                     console.log("result", result);
                     WeatherAPI.WritetNToDom(result);
+                    forecasts = result ;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -174,28 +180,51 @@ $(document).ready(function() {
         
     });
 
-        //add save the Weather data 
-    $('#logout-container').on("click","#SaveButton",(e) => {
-        let index = e.target.getAttribute('index');
-        let newForecast = forecasts[index];
+        //save current Weather 
+    $('#output').on("click",".saveWeather",() => {
         let uid= WeatherAPI.credentialsCurrentUser().uid;
-        
-        WeatherAPI.addWeather(apiKey, newForecast).then(() => {
-            let newForecast = {
-            
-            'Day': moment.unix(forecasts.dt).format('dddd'),
-            'date': moment.unix(forecasts.dt).format('MMM Do YY'),
-            'City': forecasts.name,
-            'Temp;': forecasts.main.temp,
-            'Condition': forecasts.weather[0].description,
-            'Air Pressure': forecasts.main.pressure,
-            'Wind Speed': forecasts.wind.speed,
-            // 'uid':,
+           newCurrentWeather = {    
+            'Day': moment.unix(currentWeather.dt).format('dddd'),
+            'date': moment.unix(currentWeather.dt).format('MMM Do YY'),
+            'City': currentWeather.name,
+            'Temp;': currentWeather.main.temp,
+            'Condition': currentWeather.weather[0].description,
+            'Air Pressure': currentWeather.main.pressure,
+            'Wind Speed': currentWeather.wind.speed,
             'uid':uid
-            };
+            };        
+        WeatherAPI.addWeather(apiKey, newCurrentWeather).then(() => {         
+            console.log("newCurrentWeather",newCurrentWeather);
+        $(".weather-container").addClass("hide");
+                // resolve(response);
+                console.log ("you saved the weather");
+            }).catch((error) => {
+                console.log("save Data error", error);
+            });
+        });
+
+    //save forcast Weather
+     $('#output').on("click",".saveForecast",() => {
+        let uid= WeatherAPI.credentialsCurrentUser().uid;
+        //    // for(let prop in forecasts ){
+        //     newForecast = {   
+        //     'Day': moment.unix(forecasts.list[i]dt).format('dddd'),
+        //     'date': moment.unix(forecasts.list[i]dt).format('MMM Do YY'),
+        //     'City': forecasts.city.name,
+        //     'Temp;': forecasts.main.temp,
+        //     'Condition': forecasts.weather[0].description,
+        //     'Air Pressure': forecasts.main.pressure,
+        //     'Wind Speed': forecasts.wind.speed,
+        //     'uid':uid
+        //     };
+        // };
+        // // };
+
+            console.log("newForecast",newForecast);
+
+        WeatherAPI.addWeather(apiKey, newForecast).then(() => {         
             console.log("newForecast",newForecast);
         $(".weather-container").addClass("hide");
-                console.log("dataSaved");
                 // resolve(response);
                 console.log ("you saved the weather");
             }).catch((error) => {

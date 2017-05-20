@@ -4,15 +4,15 @@ var WeatherAPI = ((DomData)=>{
     DomData.WritetToDom = (result) => {
         let outputString = "";
         outputString += `<div class="oneDayTemp">`;
-        outputString += `<div class="day temp col-xs-4"><p>day :${moment.unix(result.dt).format('dddd')} </p> </div>`;
-        outputString += `<div class="dat temp col-xs-4"><p>date :${moment.unix(result.dt).format('MMM Do YY')}</p>  </div>`;
-        outputString += `<div class="city"><p class=" placeName col-xs-4">City  :${result.name}</p> </div>`;
+        outputString += `<div class="day temp col-xs-4"><p>${moment.unix(result.dt).format('dddd')} </p> </div>`;
+        outputString += `<div class="dat temp col-xs-4"><p>${moment.unix(result.dt).format('MMM Do YY')}</p>  </div>`;
+        outputString += `<div class="city"><p class=" placeName col-xs-4">${result.name}</p> </div>`;
         outputString += `<br>`;
         outputString += `<div class="temp"><p>Temp :</p>${result.main.temp} Fahrenheit </div>`;
         outputString += `<div class="condition"><p>  Condition :</p>${result.weather[0].description}</div>`;
         outputString += `<div class="pressure"><p>Air Pressure :</p>${result.main.pressure} hpa </div>`;
         outputString += `<div class="wspeed"><p>Wind Speed :</p>${result.wind.speed}   miles/hour</div>`;
-        outputString += `<div><a href="" class= save-forecast > save</a></div>`;
+        outputString += `<div><a href="#"  class="saveWeather" > save </a><a href="#" class= "deleteWeather">  delete</a></div>`;
         outputString += `</div>`;
         $("#currentOutput").html(outputString);
     };
@@ -34,6 +34,7 @@ var WeatherAPI = ((DomData)=>{
             output2String += `<div><p class="wspeed">Wind Speed :</p>${result.list[i].speed}   miles/hour</div>`;
             output2String += `<br>`;
         }
+        output2String += `<div><a href="#" class= "saveForecast">save </a><a href="#" class= "deleteForecast">  delete</a></div>`;
         output2String += `</div>`;
         $("#forcastOutput").html(output2String);
     };

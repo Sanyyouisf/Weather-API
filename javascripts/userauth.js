@@ -39,8 +39,10 @@ var WeatherAPI = ((userData) => {
                     console.log("users", users);
                 });
                 resolve(users[0]);
+                console.log("users[0]", users[0]);
             }).fail((error) => {
                 reject(error);
+                console.log("error in getUser",error);
             });
         });
     };
@@ -51,8 +53,9 @@ var WeatherAPI = ((userData) => {
         let uid = WeatherAPI.credentialsCurrentUser().uid;
         console.log("uid in createLogoutButton ", uid);
         WeatherAPI.getUser(apiKey, uid).then((user) => {
-            let logoutButton = `<button class ="btn btn-danger" id="logoutButton">LOGOUT ${user.username}</button>`;
+            let logoutButton = `<button class ="btn btn-danger" id="logoutButton">logout ${user.username}</button>`;
             logoutButton += `<button class ="btn btn-danger" id="SaveButton">Save </button>`;
+            logoutButton += `<button class ="btn btn-danger" id="SavedButton">Show Saved</button>`;
             $("#logout-container").html(logoutButton);
         });
     };

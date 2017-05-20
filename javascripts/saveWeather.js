@@ -1,4 +1,5 @@
 var WeatherAPI = ((weatherData) => {
+	
 	weatherData.getWeather = (apiKey) =>{
 		let items =[];
 		return new Promise ((resolve,reject) => {
@@ -25,18 +26,16 @@ var WeatherAPI = ((weatherData) => {
 
 
 	weatherData.addWeather = (apiKey,newData) => {
-		uid= WeatherAPI.credentialsCurrentUser().uid;
+		let uid= WeatherAPI.credentialsCurrentUser().uid;
 		console.log("uid in addWeather",uid);
 		return new Promise ((resolve,reject) => {
 			$.ajax({
-				method :'post',
+				method :'POST',
 				url: `${apiKey.databaseURL}/forecasts.json`,
-				data:JSON.stringify(newData)
+				data: JSON.stringify(newData)
 			})				
 			.done(()=>{
-				// console.log({newData});
 				resolve();
-				// console.log("newData in add Weather function ",newData);
 			}).fail((error)=>{
 				reject(error);
 				console.log("error in addWeather function",error);
