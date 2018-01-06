@@ -67,6 +67,19 @@ var WeatherAPI = ((weatherData) => {
 	};
 
 
+	weatherData.deleteSavedForecast = (apiKey, id) => {
+		return new Promise ((resolve, reject) => {
+			$.ajax({
+				method: 'DELETE',
+				url: `${apiKey.databaseURL}/forecasts/${id}.json`
+			}).done(() => {
+				resolve();
+			}).fail((error) => {
+				reject("error in deleteSavedForecast :",error);
+			});
+		});
+	};
+
 
 
 	return weatherData;

@@ -23,6 +23,8 @@ var WeatherAPI = ((userData) => {
     };
 
 
+
+
     //A GET request is used to get data from the server.
     userData.getUser = (keys, uid) => {
         console.log("uid in get user ", uid);
@@ -55,15 +57,9 @@ var WeatherAPI = ((userData) => {
         let uid = WeatherAPI.credentialsCurrentUser().uid;
         console.log("uid in createLogoutButton ", uid);
         WeatherAPI.getUser(apiKey, uid).then((user) => {
-
-
             let logoutButton = `<li><button class ="btn btn-danger" id="logoutButton" href="#">logout</button></li>`;
             logoutButton += `<li><a id="ShowSavedButton" href="#">Show Saved Forcast</a></li>`;
             logoutButton += `<li><a id="ClearAllButton" href="#">Clear All</a></li>`;
-            
-            // let logoutButton = `<button class ="btn btn-danger" id="logoutButton">logout </button>`;
-            // logoutButton += `<button class ="btn btn-danger" id="SaveButton">Save </button>`;
-            // logoutButton += `<button class ="btn btn-danger" id="SavedButton">Show Saved</button>`;
             $("#logout-container").html(logoutButton);
         });
     };

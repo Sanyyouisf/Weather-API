@@ -4,7 +4,7 @@ $(document).ready(function() {
     let weatherApiKey="";
     let cityId = "";
     let zipCode = "";
-    let forecasts = {};
+    let forecasts = [];
     let currentWeather ={};
     let newForecast = [];
     let dayDate = new Date();
@@ -211,6 +211,53 @@ $(document).ready(function() {
     });
 
 
+    //to save forecast
+    $('#output').on("click",".saveForecast",() => {
+        forecasts=[];
+        console.log("you click to save the forecast");
+        let uid= WeatherAPI.credentialsCurrentUser().uid;
+        console.log("uid inside saveWeather event :",uid);
+        for (let i = 0; i < forecasts.length; i++) {
+           newForecast = {    
+            'Day': moment.unix(newForecast.list[i].dt).format('dddd'),
+            'date': moment.unix(newForecast.list[i].dt).format('MMM Do YY'),
+            'City': newForecast.name,
+            'Temp': newForecast.list[i].temp.day.toString(),
+            'Condition': newForecast.list[i].weather[0].description,
+            'AirPressure': newForecast.list[i].pressure.toString(),
+            'WindSpeed': newForecast.list[i].speed.toString(),
+            'uid':uid
+            };
+            forecasts.push[newForecast];
+        }; 
+        console.log("forecasts before:",forecasts);
+        WeatherAPI.SaveForecast(apiKey, forecasts)
+        .then(() => {         
+            console.log("forecasts in save forcasts :",forecasts);
+            $("#currentOutput").addClass("hide");
+            console.log ("you saved the weather");
+            $("#zipCode").attr("placeholder", "Zip Code");
+            $("#zipCode").val("");
+        })
+        .catch((error) => {
+            console.log("save Data error", error);
+        });
+    });
+
+
+    //to delete displayedforcast 
+        $('#output').on("click",".deleteForecast",(event) => {
+            console.log("event :",event);
+        WeatherAPI.deleteSavedForecast(apiKey, event.target.id)
+        .then(() => {
+            console.log("delete the forcast");
+            $('#output').empty();
+        }).catch((error) => {
+            console.log("error in deleteSavedForecast", error);
+        });
+    });
+
+
 //to clear all data 
 // event handler for <clear all button> 
 $("#logout-container").on("click","#ClearAllButton",() => {
@@ -220,43 +267,9 @@ $("#logout-container").on("click","#ClearAllButton",() => {
     // clear output data from DOM
     $("#currentOutput").empty();
     $("#forcastOutput").empty();
-    // hide the buttons that appear only when a Weather request 
-    // $("#ShowSavedButton").addClass("hide");
-    // $("#ClearAllButton").addClass("hide");
-
+    $("#ShowSavedButton").empty();
 });
 
-
-    //save forcast Weather
-     $('#output').on("click",".saveForecast",() => {
-        let uid= WeatherAPI.credentialsCurrentUser().uid;
-        
-        //    // for(let prop in forecasts ){
-        //     newForecast = {   
-        //     'Day': moment.unix(forecasts.list[i]dt).format('dddd'),
-        //     'date': moment.unix(forecasts.list[i]dt).format('MMM Do YY'),
-        //     'City': forecasts.city.name,
-        //     'Temp;': forecasts.main.temp,
-        //     'Condition': forecasts.weather[0].description,
-        //     'Air Pressure': forecasts.main.pressure,
-        //     'Wind Speed': forecasts.wind.speed,
-        //     'uid':uid
-        //     };
-        // };
-        // // };
-
-            // console.log("newForecast",newForecast);
-
-        WeatherAPI.addWeather(apiKey, newForecast).then(() => {         
-            // console.log("newForecast",newForecast);
-        $(".weather-container").addClass("hide");
-                resolve(response);
-                console.log("response :",response);
-                console.log ("you saved the weather");
-            }).catch((error) => {
-                console.log("save Data error", error);
-            });
-        });
 
      //to show saved forcast 
     $("#logout-container").on("click","#ShowSavedButton",() => {
@@ -270,15 +283,14 @@ $("#logout-container").on("click","#ClearAllButton",() => {
     let uid= WeatherAPI.credentialsCurrentUser().uid;
     console.log("uid in ShowSavedButton:",uid);
     WeatherAPI.getWeather(apiKey,uid)
-                .then((result) => {
-                    console.log("result in getweather :", result);
-                    WeatherAPI.WritetSavedToDom(result);
-                })
-                .catch((error) => {
-                    console.log("error in getWeather: ",error);
-                });
-
-});
+        .then((result) => {
+            console.log("result in getweather :", result);
+            WeatherAPI.WritetSavedToDom(result);
+            })
+        .catch((error) => {
+            console.log("error in getWeather: ",error);
+            });
+    });
 
 
 

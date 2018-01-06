@@ -12,7 +12,7 @@ var WeatherAPI = ((DomData)=>{
         outputString += `<div class="condition"><p>  Condition :</p>${result.weather[0].description}</div>`;
         outputString += `<div class="pressure"><p>Air Pressure :</p>${result.main.pressure} hpa </div>`;
         outputString += `<div class="wspeed"><p>Wind Speed :</p>${result.wind.speed}   miles/hour</div>`;
-        outputString += `<div><a href="#" class="saveWeather"> save </a><a href="#" class= "deleteWeather">  delete</a></div>`;
+        outputString += `<div><a href="#" class="saveWeather"> save </a><a href="#" class= "deleteForecast">  delete</a></div>`;
         outputString += `</div>`;
         $("#currentOutput").html(outputString);
         $("#ShowSavedButton").removeClass("hide");
@@ -62,8 +62,6 @@ var WeatherAPI = ((DomData)=>{
         $("#ShowSavedButton").removeClass("hide");
         $("#ClearAllButton").removeClass("hide");
     };
-
-
 
 
 
