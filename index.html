@@ -7,29 +7,44 @@
 </head>
 <body>
 	<!-- <button id="btnLogout" class="btn hide">Logout</button> -->
-	<div id="logout-container"></div>
-	<div id="saveData-container"></div>
+
+ <nav class="navbar navbar-inverse ">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand col-xs-offset-2">WEATHER API APP</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right" id="logout-container">
+        </ul>
+      </div> 
+  </nav>
+	
 	<div class="weather-container hide" >
-		<h1> Weather </h1>
+		<h1> Weather API </h1>
 		<input type="text" class="txt" name="text" id="zipCode" placeholder="Enter zipCode">
 		<button id="btnZip" class="btn">current Weather</button>
-		<button id="btnZip3" class="btn"> Weather in 3 days</button>
-		<button id="btnZip7" class="btn"> Weather in 7 days</button><br><br>
+		<button id="btnZip3" class="btn">3-Day Forcast</button>
+		<button id="btnZip7" class="btn">7-Day Forcast</button><br><br>
 	</div>
-	<div id="output">
+
+	<div id="saveData-container" ></div>
+
+	<div id="output" >
 		<div id="currentOutput"> </div>
 		<div id="forcastOutput"> </div>
+		<div id="savedForcastOutput" ></div>
 	</div>
 
 	<div class="container col-xs-4 col-xs-offset-4" id="login-container">
-	    <h3 class="text-center form-spacing"> Weather Api Login</h3>
+	    <h3 class="text-center form-spacing"> WEATHER API APP</h3>
 	    <input type="email"  id ="inputEmail" class=" form-control form-spacing" placeholder="inputEmail" required autofocus>
 	    <input type="password" id="inputPassword" class="form-control form-spacing" placeholder="password" required>
-	    <input type="text" id="inputUsername" class="form-control form-spacing" placeholder="UserName" required >
 	    <button class="btn btn-lg btn-primary col-md-4 " id ="LoginBtn">Login  </button>
 	    <button class="btn btn-lg btn-primary col-md-4 " id ="RegisterBtn">Register</button>
-
   </div>
+
 	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>	
 	<script type="text/javascript" src="./lib/node_modules/moment/moment.js"></script>
 	<script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>

@@ -1,6 +1,8 @@
 var WeatherAPI = ((userData) => {
 
 
+
+
     //function to add the user to database
     //The JSON.stringify() method converts a JavaScript value to a JSON string
     //A POST request is used for modifying or adding  data on the server.
@@ -53,9 +55,15 @@ var WeatherAPI = ((userData) => {
         let uid = WeatherAPI.credentialsCurrentUser().uid;
         console.log("uid in createLogoutButton ", uid);
         WeatherAPI.getUser(apiKey, uid).then((user) => {
-            let logoutButton = `<button class ="btn btn-danger" id="logoutButton">logout ${user.username}</button>`;
-            logoutButton += `<button class ="btn btn-danger" id="SaveButton">Save </button>`;
-            logoutButton += `<button class ="btn btn-danger" id="SavedButton">Show Saved</button>`;
+
+
+            let logoutButton = `<li><button class ="btn btn-danger" id="logoutButton" href="#">logout</button></li>`;
+            logoutButton += `<li><a id="ShowSavedButton" href="#">Show Saved Forcast</a></li>`;
+            logoutButton += `<li><a id="ClearAllButton" href="#">Clear All</a></li>`;
+            
+            // let logoutButton = `<button class ="btn btn-danger" id="logoutButton">logout </button>`;
+            // logoutButton += `<button class ="btn btn-danger" id="SaveButton">Save </button>`;
+            // logoutButton += `<button class ="btn btn-danger" id="SavedButton">Show Saved</button>`;
             $("#logout-container").html(logoutButton);
         });
     };
@@ -65,7 +73,7 @@ var WeatherAPI = ((userData) => {
     userData.clearLogin = () => {
         $("#inputEmail").val("");
         $("#inputPassword").val("");
-        $("#inputUsername").val("");
+        // $("#inputUsername").val("");
     };
 
 

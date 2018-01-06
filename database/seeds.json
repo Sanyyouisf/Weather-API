@@ -1,35 +1,35 @@
 {
     "forecasts": {
         "forecast0": {
-            "uid": "jm96j28tkGc2XyyPowOslFl4rBM2",
-            "Day": "",
+            "uid": "5jetmoaYm6e6OdUWilY230d4dUm1",
+            "Day": "Friday",
             "date": "May 9th 17",
             "City": "Glenview",
-            "Temp": "84.2 Fahrenheit",
+            "Temp": "84.2 ",
             "Condition": "scattered clouds",
-            "Air Pressure": "1015 hpa",
-            "Wind Speed": "3.87 miles/hour"
+            "AirPressure": "1015 ",
+            "WindSpeed": "3.87 "
 
         },
         "forecast1": {
-            "uid": "jm96j28tkGc2XyyPowOslFl4rBM2",
+            "uid": "5jetmoaYm6e6OdUWilY230d4dUm1",
             "Day": "Wednesday",
             "date": "May 10th 17",
             "City": "Glenview",
-            "Temp": "84.2 Fahrenheit",
+            "Temp": "84.2 ",
             "Condition": "sky is clear",
-            "Air Pressure": "1005.14 hpa",
-            "Wind Speed": "3.13 miles/hour"
+            "AirPressure": "1005.14 ",
+            "WindSpeed": "3.13 "
         },
         "forecast2": {
-            "uid": "jm96j28tkGc2XyyPowOslFl4rBM2",
+            "uid": "5jetmoaYm6e6OdUWilY230d4dUm1",
             "Day": "Thursday",
             "date": "May 11th 17",
             "City": "Glenview",
-            "Temp": "84.99 Fahrenheit",
+            "Temp": "84.99 ",
             "Condition": "scattered clouds",
-            "Air Pressure": "1002.45 hpa",
-            "Wind Speed": "2.56 miles/hour"
+            "AirPressure": "1002.45 ",
+            "WindSpeed": "2.56 "
         }
     },
     "users": {
