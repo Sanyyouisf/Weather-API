@@ -1,5 +1,6 @@
 lib/bower_components
 DS_Store
 lib/node_modules
+apikey.json
 
 

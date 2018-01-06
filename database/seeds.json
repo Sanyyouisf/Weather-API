@@ -1,0 +1,50 @@
+{
+    "forecasts": {
+        "forecast0": {
+            "uid": "5jetmoaYm6e6OdUWilY230d4dUm1",
+            "Day": "Friday",
+            "date": "May 9th 17",
+            "City": "Glenview",
+            "Temp": "84.2 ",
+            "Condition": "scattered clouds",
+            "AirPressure": "1015 ",
+            "WindSpeed": "3.87 "
+
+        },
+        "forecast1": {
+            "uid": "5jetmoaYm6e6OdUWilY230d4dUm1",
+            "Day": "Wednesday",
+            "date": "May 10th 17",
+            "City": "Glenview",
+            "Temp": "84.2 ",
+            "Condition": "sky is clear",
+            "AirPressure": "1005.14 ",
+            "WindSpeed": "3.13 "
+        },
+        "forecast2": {
+            "uid": "5jetmoaYm6e6OdUWilY230d4dUm1",
+            "Day": "Thursday",
+            "date": "May 11th 17",
+            "City": "Glenview",
+            "Temp": "84.99 ",
+            "Condition": "scattered clouds",
+            "AirPressure": "1002.45 ",
+            "WindSpeed": "2.56 "
+        }
+    },
+    "users": {
+        "user0": {
+            "uid": "jm96j28tkGc2XyyPowOslFl4rBM2",
+            "username": "sany"
+        },
+        "user1": {
+            "uid": "V5AaTO0NM7TGsNLVAV4X0JpMshg2",
+            "username": "sany2"
+        },
+        "user2": {
+            "uid": "tLegjdFfmENcy21zXiiNGTszaIl1",
+            "username": "sany3"
+        }
+    }
+
+}
